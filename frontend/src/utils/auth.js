@@ -1,4 +1,4 @@
-const baseUrl = "https://mestobekend.nomoredomainsicu.ru/";
+const baseUrl = "https://mestobekend.nomoredomainsicu.ru";
 function getResponseData(res) {
   return res.ok
     ? res.json()
