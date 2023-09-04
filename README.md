@@ -9,7 +9,7 @@
 
 ## Ссылки на проект
 
-IP-адрес 158.160.105.123
+IP 158.160.105.123
 
 Frontend https://mestofrontent.nomoredomainsicu.ru
 
