@@ -2,12 +2,12 @@ require('dotenv').config();
 const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
-
 const helmet = require('helmet');
 // winston
 const { errors } = require('celebrate');
 // cors
 const cors = require('cors');
+const { limiter } = require('./utils/constant');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
 
 const errorHandler = require('./middlewares/error-handler');
@@ -20,6 +20,12 @@ const app = express();
 // cors
 app.use(cors({ credentials: true, origin: 'https://mestofrontent.nomoredomainsicu.ru' }));
 
+app.get('/crash-test', () => {
+  setTimeout(() => {
+    throw new Error('Сервер сейчас упадёт');
+  }, 0);
+});
+
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(helmet());
@@ -30,6 +36,9 @@ mongoose.connect(DB_URL, {
   useUnifiedTopology: true,
 });
 app.use(requestLogger); // подключаем логгер запросов
+
+app.use(limiter);
+
 app.use('/', require('./routes/index'));
 
 app.use('*', (req, res, next) => {
