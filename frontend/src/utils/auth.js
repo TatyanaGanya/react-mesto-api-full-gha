@@ -1,6 +1,4 @@
-const baseUrl = "http://mestobekend.nomoredomainsicu.ru/";
-//const baseUrl = "https://mestobekend.nomoreparties.co";
-//const baseUrl = "http://localhost:3000";
+const baseUrl = "https://mestobekend.nomoredomainsicu.ru/";
 function getResponseData(res) {
   return res.ok
     ? res.json()
