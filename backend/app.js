@@ -17,7 +17,7 @@ const { PORT = 3000, DB_URL = 'mongodb://127.0.0.1:27017/mongodb' } = process.en
 const app = express();
 
 // cors
-app.use(cors({ credentials: true, origin: true }));
+app.use(cors({ credentials: true, origin: 'https://mestofrontent.nomoredomainsicu.ru' }));
 
 app.get('/crash-test', () => {
   setTimeout(() => {
