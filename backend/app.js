@@ -19,6 +19,12 @@ const app = express();
 // cors
 app.use(cors({ credentials: true, origin: true }));
 
+app.get('/crash-test', () => {
+  setTimeout(() => {
+    throw new Error('Сервер сейчас упадёт');
+  }, 0);
+});
+
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(helmet());
@@ -29,12 +35,6 @@ mongoose.connect(DB_URL, {
   useUnifiedTopology: true,
 });
 app.use(requestLogger); // подключаем логгер запросов
-
-app.get('/crash-test', () => {
-  setTimeout(() => {
-    throw new Error('Сервер сейчас упадёт');
-  }, 0);
-});
 
 app.use('/', require('./routes/index'));
 
