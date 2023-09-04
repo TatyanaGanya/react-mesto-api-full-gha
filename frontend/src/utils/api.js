@@ -113,7 +113,7 @@ class Api {
 }
 
 const api = new Api({
-  baseUrl: "https://mestobekend.nomoredomainsicu.ru/",
+  baseUrl: "https://mestobekend.nomoredomainsicu.ru",
   // headers: {
   //   authorization: "69b59d5b-f26f-4db1-9d60-b5f1c83af874",
   //   "Content-Type": "application/json",
